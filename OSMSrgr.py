@@ -38,6 +38,7 @@ def gold_generate(lenght):
 def gold_check(SignalWithNoice, gold):
     gold = np.repeat(gold, 5)
     cor = np.correlate(SignalWithNoice, gold, "valid")
+    cor/= cor[cor.argmax()]
     max_arg = np.argmax(cor)
     
     plt.figure(10)
